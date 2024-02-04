@@ -1,0 +1,73 @@
+// Variables
+@import 'variables';
+
+.modal-content {
+    border-radius: 4px 0px 0px 4px;
+    background: #FFF;
+    display: flex;
+    width: 360px;
+    padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: none!important;
+
+    .header {
+        display: flex;
+        gap: 0.5rem;
+        flex-direction: column;
+
+        div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            h1 {
+                color: $font-0;
+                font-size: 1.25rem;
+                margin: 0;
+            }
+
+            svg {
+                width: 1.5rem;
+                height: 1.5rem;
+                cursor: pointer;
+            }
+        }
+
+        p {
+            color: $font-1!important;
+            font-size: 0.875rem!important;
+            line-height: 1.25rem!important;
+            margin: 0!important;
+            white-space: nowrap!important;
+        }
+    }
+
+    .body-modal {
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        label {
+            color: $font-0;
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.25rem;
+        }
+
+        .subdesc {
+            color: $font-2;
+            font-size: 0.75rem;
+            margin: 0;
+        }
+    }
+
+    .footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+    }
+}

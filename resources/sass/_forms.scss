@@ -1,0 +1,214 @@
+@import 'variables';
+
+.input-form {
+    border-radius: 0.25rem!important;
+    border: 1px solid $gray-0!important;
+    background: $white-color!important;
+    padding: 0.5rem!important;
+    color: $font-0!important;
+    font-size: 0.875rem!important;
+    line-height: 1rem!important;
+    width: 100%!important;
+    &:focus-visible {
+        outline: none;
+    }
+    &::placeholder {
+        color: $font-2!important;
+    }
+    &.errorField {
+        border: 1px solid #E04B59!important;
+    }
+}
+
+.primary-button {
+    all: unset!important;
+    padding: 0.5rem 1rem!important;
+    gap: 0.25rem!important;
+    border-radius: 0.25rem!important;
+    background-color: $primary-color!important;
+    color: $white-color!important;
+    font-size: 0.875rem!important;
+    line-height: 1rem!important;
+    cursor: pointer!important;
+    &:hover {
+        background-color: $primary-color-hover!important;
+    }
+    &:disabled {
+        opacity: 0.5;
+    }
+}
+
+.secondary-button {
+    all: unset!important;
+    display: flex!important;
+    padding: 0.5rem 1rem!important;
+    gap: 0.5rem!important;
+    border-radius: 0.25rem!important;
+    border: 1px solid $gray-0!important;
+    background: $white-color!important;
+    color: $font-0!important;
+    font-size: 0.875rem!important;
+    line-height: 1rem!important;
+    cursor: pointer!important;
+    &:hover {
+        background-color: $gray-0!important;
+    }
+}
+
+.cancel-button {
+    @extend .secondary-button;
+    margin-left: 0.5rem!important;
+}
+
+.messageError {
+    color: #E04B59;
+    font-size: 0.75rem;
+    margin: 0;
+}
+
+//Select2
+
+.select2 {
+    width: 100%!important;
+    border: 1px solid $gray-0!important;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    &.errorField {
+        border: 1px solid #E04B59!important;
+    }
+
+    .selection {
+        width: 100%;
+
+        .select2-selection {
+            padding: 0.5rem!important;
+            border: none!important;
+            height: auto!important;
+
+            .select2-selection__rendered {
+                color: $font-0;
+                font-size: 0.875rem;
+                line-height: 1rem;
+                padding: 0px;
+                padding-right: 1.25rem;
+
+                .select2-selection__placeholder {
+                    color: $font-2;
+                }
+            }
+
+            .select2-selection__arrow {
+                height: 2rem!important;
+                top: 0!important;
+                right: 0.5rem!important;
+                width: 1rem!important;
+            }
+        }
+    }
+}
+
+//Upload Image
+
+.divImage {
+    border-radius: 10px;
+    border: 1px dashed $gray-0!important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.75rem 2.5rem!important;
+    cursor: pointer!important;
+    &.active {
+        opacity: 0.5;
+    }
+
+    svg {
+        color: $font-2;
+        width: 60px;
+        height: 60px;
+    }
+
+    span {
+        color: $font-2;
+        font-style: normal;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        white-space: nowrap;
+    }
+}
+
+.input-password {
+    display: flex;
+    align-items: center;
+
+    div {
+        margin-left: -30px;
+        cursor: pointer;
+        color: $font-2!important;
+    }
+}
+
+.preview-img {
+    width: 100%;
+}
+
+.radios {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    div {
+        display: flex;
+        gap: 0.25rem;
+        align-items: flex-start;
+
+        input {
+            width: 1rem;
+            height: 1rem;
+            accent-color: $primary-color;
+        }
+
+        .description-option {
+            display: flex;
+            flex-direction: column;
+
+            label {
+                margin: 0;
+            }
+
+            span {
+                color: $font-1;
+                font-size: 0.75rem;
+                font-style: italic;
+                line-height: 1rem;
+            }
+        }
+    }
+}
+
+.radios-inline {
+    display: flex;
+    gap: 0.5rem;
+
+    div {
+        display: flex;
+        gap: 0.25rem;
+        align-items: center;
+
+        input {
+            width: 1rem;
+            height: 1rem;
+            accent-color: $primary-color;
+        }
+
+        label {
+            margin: 0;
+        }
+    }
+}
+
+.dates {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+}

@@ -27,3 +27,6 @@ Route::post('/settings/user/store', [App\Http\Controllers\UserController::class,
 Route::delete('/settings/user/delete/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.delete')->middleware('can:delete_user');
 Route::put('/settings/user/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update')->middleware('can:edit_user');
 Route::put('/settings/user/update_password/{id}', [App\Http\Controllers\UserController::class, 'update_password'])->name('user.update_password')->middleware('can:edit_user');
+
+// OTHER
+Route::post('/file-upload', [App\Http\Controllers\FileUploadController::class, 'FileUpload' ])->name('FileUpload');
