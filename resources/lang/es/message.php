@@ -37,6 +37,7 @@ return [
     'register' => 'Registro',
     'edit' => 'Editar',
     'actions' => 'Comportamiento',
+    'sector' => 'Sector',
 
     //Months
     'months' => 'Meses',
@@ -67,6 +68,10 @@ return [
     'sectors' => 'Sectors',
     'sectors_description' => 'Cotización y sincronización de todos los sectores bursátiles',
     'sync_sector' => 'Sincronizar sectores',
+
+    //Subsector
+    'subsectors' => 'Subsectors',
+    'subsectors_description' => 'Cotización y sincronización de todos los Subsectores bursátiles',
 
     //User Web
     'users_web' => 'Usuarios web',

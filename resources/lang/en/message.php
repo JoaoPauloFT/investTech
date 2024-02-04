@@ -37,6 +37,7 @@ return [
     'register' => 'Register',
     'edit' => 'Edit',
     'actions' => 'Actions',
+    'sector' => 'Sector',
 
     //Months
     'months' => 'Months',
@@ -67,6 +68,10 @@ return [
     'sectors' => 'Sectors',
     'sectors_description' => 'Listing and synchronization of all stock sectors',
     'sync_sector' => 'Synchronize Sectors',
+
+    //Subsector
+    'subsectors' => 'Subsectors',
+    'subsectors_description' => 'Listing and synchronization of all stock subsectors',
 
     //User Web
     'users_web' => 'Web Users',

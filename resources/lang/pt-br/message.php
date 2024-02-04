@@ -20,6 +20,7 @@ return [
     'value' => 'Valor',
     'created_by' => 'Cadastrado por',
     'date_create' => 'Data de cadastro',
+    'sector' => 'Setor',
 
     //Components
     'upload_image_text' => 'Fazer upload de uma imagem',
@@ -63,10 +64,14 @@ return [
     'friday' => 'Sexta',
     'saturday' => 'Sabado',
 
+    //Sector
+    'sectors' => 'Setores',
+    'sectors_description' => 'Listagem e sincronização de todos setores de ações',
+    'sync_sector' => 'Sincronizar Setores',
+
     //Subsector
     'subsectors' => 'Sub-setores',
     'subsectors_description' => 'Listagem e sincronização de todos os sub-setores de ações',
-    'sector' => 'Setor',
 
     //User Web
     'users_web' => 'Usuários Web',
