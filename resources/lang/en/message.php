@@ -63,6 +63,11 @@ return [
     'friday' => 'Friday',
     'saturday' => 'Saturday',
 
+    //Sector
+    'sectors' => 'Sectors',
+    'sectors_description' => 'Listing and synchronization of all stock sectors',
+    'sync_sector' => 'Synchronize Sectors',
+
     //User Web
     'users_web' => 'Web Users',
     'users_web_description' => 'List and registration of users who have access to the totem web platform',

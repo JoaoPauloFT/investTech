@@ -63,6 +63,11 @@ return [
     'friday' => 'Sexta',
     'saturday' => 'Sabado',
 
+    //Subsector
+    'subsectors' => 'Sub-setores',
+    'subsectors_description' => 'Listagem e sincronização de todos os sub-setores de ações',
+    'sector' => 'Setor',
+
     //User Web
     'users_web' => 'Usuários Web',
     'users_web_description' => 'Listagem e cadastro de usuários que tem acesso a plataforma web do totem',

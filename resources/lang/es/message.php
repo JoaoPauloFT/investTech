@@ -63,6 +63,11 @@ return [
     'friday' => 'Viernes',
     'saturday' => 'Sábado',
 
+    //Sector
+    'sectors' => 'Sectors',
+    'sectors_description' => 'Cotización y sincronización de todos los sectores bursátiles',
+    'sync_sector' => 'Sincronizar sectores',
+
     //User Web
     'users_web' => 'Usuarios web',
     'users_web_description' => 'Lista y registro de usuarios que tienen acceso a la plataforma web totem',

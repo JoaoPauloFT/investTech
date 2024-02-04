@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,10 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// SECTOR
+Route::get('/settings/sector', [App\Http\Controllers\SectorController::class, 'index'])->name('sector')->middleware('can:list_sector');
+Route::get('/settings/sector/sync', [App\Http\Controllers\SectorController::class, 'sync'])->name('sector.sync')->middleware('can:sync_sector');
 
 // USER
 Route::get('/settings/user', [App\Http\Controllers\UserController::class, 'index'])->name('user')->middleware('can:list_user');
