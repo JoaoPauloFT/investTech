@@ -296,24 +296,6 @@ return [
             'url'  => '/',
             'icon' => 'fa-solid fa-house',
         ],
-//        [
-//            'text' => 'donates',
-//            'url'  => 'donations',
-//            'can'  => ['list_donation'],
-//            'icon' => 'fa-solid fa-hand-holding-dollar',
-//        ],
-//        [
-//            'text' => 'Check-ins',
-//            'url'  => 'checkins',
-//            'can'  => ['list_checkin'],
-//            'icon' => 'fa-solid fa-circle-check',
-//        ],
-//        [
-//            'text' => 'Pre-Registration',
-//            'url'  => 'members',
-//            'can'  => ['list_member'],
-//            'icon' => 'fa-solid fa-user-check',
-//        ],
         [
             'text' => 'cad',
             'icon' => 'fa-solid fa-gear',
@@ -334,26 +316,11 @@ return [
                     'url'  => 'settings/action',
                     'can'  => ['list_action'],
                 ],
-//                [
-//                    'text' => 'totem',
-//                    'url'  => 'settings/totem',
-//                    'can'  => ['list_totem'],
-//                ],
-//                [
-//                    'text' => 'user_totem',
-//                    'url'  => 'settings/user_totem',
-//                    'can'  => ['list_user_totem'],
-//                ],
-//                [
-//                    'text' => 'user',
-//                    'url'  => 'settings/user',
-//                    'can'  => ['list_user'],
-//                ],
-//                [
-//                    'text' => 'config',
-//                    'url'  => 'settings/config',
-//                    'can'  => ['list_config'],
-//                ],
+                [
+                    'text' => 'user',
+                    'url'  => 'settings/user',
+                    'can'  => ['list_user'],
+                ],
             ],
         ],
     ],
