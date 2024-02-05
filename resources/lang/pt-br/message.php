@@ -21,6 +21,9 @@ return [
     'created_by' => 'Cadastrado por',
     'date_create' => 'Data de cadastro',
     'sector' => 'Setor',
+    'subsector' => 'Sub-Setor',
+    'ticker' => 'Papel',
+    'type' => 'Tipo',
 
     //Components
     'upload_image_text' => 'Fazer upload de uma imagem',
@@ -72,6 +75,11 @@ return [
     //Subsector
     'subsectors' => 'Sub-setores',
     'subsectors_description' => 'Listagem e sincronização de todos os sub-setores de ações',
+
+    //Action
+    'stocks' => 'Ações',
+    'actions_description' => 'Listagem e sincronização de todos as ações',
+    'sync_action' => 'Sincronizar Ações',
 
     //User Web
     'users_web' => 'Usuários Web',

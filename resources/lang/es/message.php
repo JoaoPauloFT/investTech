@@ -20,6 +20,10 @@ return [
     'value' => 'Valor',
     'created_by' => 'Registrado por',
     'date_create' => 'Fecha de Registro',
+    'sector' => 'Sector',
+    'subsector' => 'Subsetor',
+    'ticker' => 'Ticker',
+    'type' => 'Tipo',
 
     //Components
     'upload_image_text' => 'Subir una imagen',
@@ -37,7 +41,6 @@ return [
     'register' => 'Registro',
     'edit' => 'Editar',
     'actions' => 'Comportamiento',
-    'sector' => 'Sector',
 
     //Months
     'months' => 'Meses',
@@ -72,6 +75,11 @@ return [
     //Subsector
     'subsectors' => 'Subsectors',
     'subsectors_description' => 'Cotización y sincronización de todos los Subsectores bursátiles',
+
+    //Action
+    'stocks' => 'Acciones',
+    'actions_description' => 'Cotización y sincronización de todos las acciones',
+    'sync_action' => 'Sincronizar Acciones',
 
     //User Web
     'users_web' => 'Usuarios web',

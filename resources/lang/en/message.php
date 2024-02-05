@@ -20,6 +20,10 @@ return [
     'value' => 'Value',
     'created_by' => 'Created by',
     'date_create' => 'Date of create',
+    'sector' => 'Sector',
+    'subsector' => 'Subsector',
+    'ticker' => 'Ticker',
+    'type' => 'Type',
 
     //Components
     'upload_image_text' => 'Upload an image',
@@ -37,7 +41,6 @@ return [
     'register' => 'Register',
     'edit' => 'Edit',
     'actions' => 'Actions',
-    'sector' => 'Sector',
 
     //Months
     'months' => 'Months',
@@ -72,6 +75,11 @@ return [
     //Subsector
     'subsectors' => 'Subsectors',
     'subsectors_description' => 'Listing and synchronization of all stock subsectors',
+
+    //Action
+    'stocks' => 'Stocks',
+    'actions_description' => 'Listing and synchronization of all stocks',
+    'sync_action' => 'Synchronize stocks',
 
     //User Web
     'users_web' => 'Web Users',

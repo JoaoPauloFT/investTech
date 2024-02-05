@@ -23,6 +23,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/settings/sector', [App\Http\Controllers\SectorController::class, 'index'])->name('sector')->middleware('can:list_sector');
 Route::get('/settings/sector/sync', [App\Http\Controllers\SectorController::class, 'sync'])->name('sector.sync')->middleware('can:sync_sector');
 
+// SUBSECTOR
+Route::get('/settings/subsector', [App\Http\Controllers\SubsectorController::class, 'index'])->name('subsector')->middleware('can:list_subsector');
+
+// ACTION
+Route::get('/settings/action', [App\Http\Controllers\ActionController::class, 'index'])->name('action')->middleware('can:list_action');
+Route::get('/settings/action/sync', [App\Http\Controllers\ActionController::class, 'sync'])->name('action.sync')->middleware('can:sync_action');
+
 // USER
 Route::get('/settings/user', [App\Http\Controllers\UserController::class, 'index'])->name('user')->middleware('can:list_user');
 Route::post('/settings/user/store', [App\Http\Controllers\UserController::class, 'store'])->name('user.store')->middleware('can:create_user');
