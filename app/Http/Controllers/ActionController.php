@@ -22,47 +22,10 @@ class ActionController extends Controller
         return view('action.index', compact('actions'));
     }
 
-    public function sync(Action $action) {
+    public function listSync()
+    {
         ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 6.0)');
 
-        $actions = $this->getAllActions();
-
-        foreach ($actions as $a) {
-
-            $url = "https://www.fundamentus.com.br/detalhes.php?papel=".$a;
-
-            $doc = new \DOMDocument();
-            $internalErrors = libxml_use_internal_errors(true);
-            $success = $doc->loadHTMLFile($url);
-            libxml_use_internal_errors($internalErrors);
-
-            if($success) {
-                $act = array();
-
-                $table = $doc->getElementsByTagName('table')->item(0);
-
-                if(strtotime('-2 months') < strtotime($table->childNodes[3]->childNodes[7]->nodeValue)) {$sector = $table->childNodes[7]->childNodes[3]->nodeValue;
-                    $name_subsector = $table->childNodes[9]->childNodes[3]->nodeValue;
-
-                    $subsector = new SubsectorController();
-
-                    $act['subsector_id'] = $subsector->save($name_subsector, $sector)->id;
-
-                    $act['ticker'] = $table->childNodes[1]->childNodes[3]->nodeValue;
-                    $act['type'] = $table->childNodes[3]->childNodes[3]->nodeValue;
-                    $act['name'] = $table->childNodes[5]->childNodes[3]->nodeValue;
-                    $act['nomenclature'] = substr($act['ticker'], 0, 4);
-
-                    $this->save($action, $act);
-                }
-            }
-        }
-
-        return redirect()->route('action');
-    }
-
-    public function getAllActions(): array
-    {
         $action = array();
 
         $url = "http://www.fundamentus.com.br/resultado.php";
@@ -82,14 +45,51 @@ class ActionController extends Controller
             }
         }
 
-        return $action;
+        return response()->json([
+            'data' => $action,
+            'qtdActions' => count($action),
+        ]);
     }
 
-    public function save(Action $action, array $act) {
-        $a = $action->where('ticker', $act["ticker"])->first();
+    public function getAction(Request $request)
+    {
+        ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 6.0)');
 
-        if (!$a) {
-            $action->create($act);
+        $url = "https://www.fundamentus.com.br/detalhes.php?papel=".$request->action;
+
+        $doc = new \DOMDocument();
+        $internalErrors = libxml_use_internal_errors(true);
+        $success = $doc->loadHTMLFile($url);
+        libxml_use_internal_errors($internalErrors);
+
+        $act = array();
+        if($success) {
+
+            $table = $doc->getElementsByTagName('table')->item(0);
+
+            if(strtotime('-2 months') < strtotime($table->childNodes[3]->childNodes[7]->nodeValue)) {
+                $sector = $table->childNodes[7]->childNodes[3]->nodeValue;
+                $name_subsector = $table->childNodes[9]->childNodes[3]->nodeValue;
+
+                $subsector = new SubsectorController();
+
+                $act = new Action();
+
+                $act = $act->where('ticker', $table->childNodes[1]->childNodes[3]->nodeValue)->first();
+
+                $act->subsector_id = $subsector->save($name_subsector, $sector)->id;
+
+                $act->ticker = $table->childNodes[1]->childNodes[3]->nodeValue;
+                $act->type = $table->childNodes[3]->childNodes[3]->nodeValue;
+                $act->name = $table->childNodes[5]->childNodes[3]->nodeValue;
+                $act->nomenclature = substr($act->ticker, 0, 4);
+
+                $act->save();
+            }
         }
+
+        return response()->json([
+            'data' => $act,
+        ]);
     }
 }

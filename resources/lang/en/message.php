@@ -80,6 +80,7 @@ return [
     'stocks' => 'Stocks',
     'actions_description' => 'Listing and synchronization of all stocks',
     'sync_action' => 'Synchronize stocks',
+    'update_stocks' => 'Updating stocks...',
 
     //User Web
     'users_web' => 'Web Users',

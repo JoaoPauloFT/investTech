@@ -29,6 +29,8 @@ Route::get('/settings/subsector', [App\Http\Controllers\SubsectorController::cla
 // ACTION
 Route::get('/settings/action', [App\Http\Controllers\ActionController::class, 'index'])->name('action')->middleware('can:list_action');
 Route::get('/settings/action/sync', [App\Http\Controllers\ActionController::class, 'sync'])->name('action.sync')->middleware('can:sync_action');
+Route::get('/settings/action/sync/list', [App\Http\Controllers\ActionController::class, 'listSync'])->name('action.list_sync')->middleware('can:sync_action');
+Route::post('/settings/action/sync/action', [App\Http\Controllers\ActionController::class, 'getAction'])->name('action.get_action')->middleware('can:sync_action');
 
 // USER
 Route::get('/settings/user', [App\Http\Controllers\UserController::class, 'index'])->name('user')->middleware('can:list_user');

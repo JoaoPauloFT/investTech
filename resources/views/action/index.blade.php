@@ -13,10 +13,10 @@
     </div>
     @can('sync_action')
         <div class="actions mb-3">
-            <a id="createButton" href="{{ route('action.sync') }}">
+            <button type="button" id="syncStocks">
                 <i class="fa-solid fa-plus br"></i>
                 {{ __('message.sync_action') }}
-            </a>
+            </button>
         </div>
     @endcan
 @stop
@@ -48,4 +48,84 @@
             </tbody>
         </x-forms.table>
     </div>
+    <div class="modal js-loading-bar">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div>
+                        <p>{{ __('message.update_stocks') }} <span id="progress-status">(0/1000)</span></p>
+                    </div>
+                    <div class="progress progress-popup">
+                        <div class="progress-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @stop
+
+<script>
+    window.addEventListener('load', function () {
+        // Setup
+        $('.js-loading-bar').modal({
+            backdrop: 'static',
+            show: false
+        });
+        
+        var $modal = $('.js-loading-bar'),
+            $bar = $modal.find('.progress-bar');
+
+        $('#syncStocks').click(function() {
+
+            $.ajax('{{ route('action.list_sync') }}', {
+                type: 'GET',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function (response) {
+                    let actions = response.data;
+                    let qtdActions = response.qtdActions;
+                    let actionsOk = 0;
+
+                    $('#progress-status').text('(' + actionsOk + '/' + qtdActions + ')');
+                    $modal.modal('show');
+
+                    actions.forEach(element => {
+                        $.ajax('{{ route('action.get_action') }}', {
+                            type: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify({
+                                action: element
+                            }),
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            },
+                            success: function (response) {
+                                actionsOk++;
+                                updateStatus(actionsOk, qtdActions);
+                            },
+                            error: function(xhr, ajaxOptions, thrownError) {
+                                console.log("Erro ao importar a ação: " + element);
+                                $.ajax(this);
+                                return;
+                            }
+                        });
+                    });
+                    
+                }
+            });
+        });
+
+        function updateStatus(actionsOk, qtdActions) {
+            $('#progress-status').text('(' + actionsOk + '/' + qtdActions + ')');
+            let percent = actionsOk / qtdActions * 100;
+            $bar.css('width', percent + '%');
+
+            if (actionsOk == qtdActions) {
+                actionsOk = 0;
+                $('#progress-status').text('(' + actionsOk + '/' + qtdActions + ')');
+                $modal.modal('hide');
+            }
+        }
+    });
+</script>
