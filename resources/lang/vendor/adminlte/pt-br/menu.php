@@ -7,5 +7,6 @@ return [
     'subsector'             => 'Sub-Setores',
     'action'                => 'Ações',
     'user'                  => 'Usuários',
+    'indicator'             => 'Indicadores de ações',
 
 ];

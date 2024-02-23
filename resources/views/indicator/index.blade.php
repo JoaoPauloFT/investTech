@@ -4,45 +4,77 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 @stop
 
-@section('title', __('message.actions'))
+@section('title', __('message.stock_indicators'))
 
 @section('content_header')
     <div class="title mb-3">
-        <h1>{{ __('message.actions') }}</h1>
-        <p>{{ __('message.actions_description') }}</p>
+        <h1>{{ __('message.stock_indicators') }}</h1>
+        <p>{{ __('message.stock_indicators_description') }}</p>
     </div>
-    @can('sync_action')
+    @can('sync_action_history')
         <div class="actions mb-3">
-            <button type="button" id="syncStocks">
+            <a id="createButton" href="{{ route('indicator.sync') }}">
                 <i class="fa-solid fa-plus br"></i>
-                {{ __('message.sync_action') }}
-            </button>
+                {{ __('message.get_indicators') }}
+            </a>
         </div>
     @endcan
 @stop
 
 @section('content')
     <div class="body">
-        <x-forms.table :dropdownFilter="[3,4,5]">
+        <x-forms.table :dropdownFilter="[]">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>{{ __('message.ticker') }}</th>
-                <th>{{ __('message.name') }}</th>
-                <th>{{ __('message.sector') }}</th>
-                <th>{{ __('message.subsector') }}</th>
-                <th>{{ __('message.type') }}</th>
+                <th>{{ __('message.action') }}</th>
+                <th>{{ __('message.cotation') }}</th>
+                <th>{{ __('message.pl') }}</th>
+                <th>{{ __('message.pvp') }}</th>
+                <th>{{ __('message.psr') }}</th>
+                <th>{{ __('message.dividend_yield') }}</th>
+                <th>{{ __('message.price_active') }}</th>
+                <th>{{ __('message.price_working_capital') }}</th>
+                <th>{{ __('message.price_ebit') }}</th>
+                <th>{{ __('message.price_active_circ') }}</th>
+                <th>{{ __('message.ev_ebit') }}</th>
+                <th>{{ __('message.ev_ebitda') }}</th>
+                <th>{{ __('message.margin_ebit') }}</th>
+                <th>{{ __('message.liquid_margin') }}</th>
+                <th>{{ __('message.current_liquidation') }}</th>
+                <th>{{ __('message.roic') }}</th>
+                <th>{{ __('message.roe') }}</th>
+                <th>{{ __('message.liquidation_old_months') }}</th>
+                <th>{{ __('message.net_worth') }}</th>
+                <th>{{ __('message.gross_debt_patrimony') }}</th>
+                <th>{{ __('message.recurring_growth') }}</th>
+                <th>{{ __('message.created_by') }}</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($actions as $a)
+            @foreach($actionHistories as $ah)
                 <tr>
-                    <td>{{ $a->id }}</td>
-                    <td><a href="{{ route('action.detail', $a->id) }}">{{ $a->ticker }}</a></td>
-                    <td>{{ $a->name }}</td>
-                    <td>{{ $a->subsector->sector->name }}</td>
-                    <td>{{ $a->subsector->name }}</td>
-                    <td>{{ $a->type }}</td>
+                    <td><a href="{{ route('action.detail', $ah->action->id) }}">{{ $ah->action->ticker }}</a></td>
+                    <td>R$ {{ number_format($ah->cotation, 2, ',', '.') }}</td>
+                    <td>{{ number_format($ah->pl, 2, ',', '.') }}</td>
+                    <td>{{ number_format($ah->pvp, 2, ',', '.') }}</td>
+                    <td>{{ number_format($ah->psr, 3, ',', '.') }}</td>
+                    <td>{{ $ah->dividend_yield / 100 }}%</td>
+                    <td>{{ number_format($ah->price_active, 3, ',', '.') }}</td>
+                    <td>{{ number_format($ah->price_working_capital, 2, ',', '.') }}</td>
+                    <td>{{ number_format($ah->price_ebit, 2, ',', '.') }}</td>
+                    <td>{{ number_format($ah->price_active_circ, 2, ',', '.') }}</td>
+                    <td>{{ number_format($ah->ev_ebit, 2, ',', '.') }}</td>
+                    <td>{{ number_format($ah->ev_ebitda, 2, ',', '.') }}</td>
+                    <td>{{ $ah->margin_ebit / 100 }}%</td>
+                    <td>{{ $ah->liquid_margin / 100 }}%</td>
+                    <td>{{ number_format($ah->current_liquidation, 2, ',', '.') }}</td>
+                    <td>{{ $ah->roic / 100 }}%</td>
+                    <td>{{ $ah->roe / 100 }}%</td>
+                    <td>R$ {{ number_format($ah->liquidation_old_months, 2, ',', '.') }}</td>
+                    <td>R$ {{ number_format($ah->net_worth, 2, ',', '.') }}</td>
+                    <td>{{ number_format($ah->gross_debt_patrimony, 2, ',', '.') }}</td>
+                    <td>{{ $ah->recurring_growth / 100 }}%</td>
+                    <td>{{ date("d/m/Y H:i", strtotime($ah->created_at)) }}</td>
                 </tr>
             @endforeach
             </tbody>

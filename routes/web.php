@@ -26,11 +26,16 @@ Route::get('/settings/sector/sync', [App\Http\Controllers\SectorController::clas
 // SUBSECTOR
 Route::get('/settings/subsector', [App\Http\Controllers\SubsectorController::class, 'index'])->name('subsector')->middleware('can:list_subsector');
 
+// ACTION HISTORY
+Route::get('/indicator', [App\Http\Controllers\ActionHistoryController::class, 'index'])->name('indicator')->middleware('can:list_indicator');
+Route::get('/indicator/sync', [App\Http\Controllers\ActionHistoryController::class, 'sync'])->name('indicator.sync')->middleware('can:sync_indicator');
+
 // ACTION
 Route::get('/settings/action', [App\Http\Controllers\ActionController::class, 'index'])->name('action')->middleware('can:list_action');
 Route::get('/settings/action/sync', [App\Http\Controllers\ActionController::class, 'sync'])->name('action.sync')->middleware('can:sync_action');
 Route::get('/settings/action/sync/list', [App\Http\Controllers\ActionController::class, 'listSync'])->name('action.list_sync')->middleware('can:sync_action');
 Route::post('/settings/action/sync/action', [App\Http\Controllers\ActionController::class, 'getAction'])->name('action.get_action')->middleware('can:sync_action');
+Route::get('/settings/action/detail/{id}', [App\Http\Controllers\ActionController::class, 'detail'])->name('action.detail')->middleware('can:detail_action');
 
 // USER
 Route::get('/settings/user', [App\Http\Controllers\UserController::class, 'index'])->name('user')->middleware('can:list_user');

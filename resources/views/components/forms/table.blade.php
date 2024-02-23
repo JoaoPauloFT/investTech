@@ -16,6 +16,8 @@
             for (let i = 0; i < $('thead tr th').length; i++) {
                 columns.push(i);
             }
+            
+            $.fn.dataTable.moment( 'DD/MM/YYYY - HH:mm' );
 
             let table = new DataTable('#myTable', {
                 responsive: true,
@@ -32,7 +34,9 @@
                     infoEmpty: "{{ __('message.infoEmpty') }}",
                     infoFiltered: "{{ __('message.infoFiltered') }}",
                     zeroRecords: "{{ __('message.zeroRecords') }}",
-                    lengthMenu: "_MENU_"
+                    lengthMenu: "_MENU_",
+                    decimal: ",",
+                    thousands: "."
                 },
                 dom: '<"header"fBr><"selects">"t<"bottom"<"lbottom"li>p>',
                 buttons: [

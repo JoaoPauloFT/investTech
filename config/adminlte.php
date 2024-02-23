@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 return [
 
@@ -297,6 +297,12 @@ return [
             'icon' => 'fa-solid fa-house',
         ],
         [
+            'text' => 'indicator',
+            'url'  => '/indicator',
+            'can'  => ['list_indicator'],
+            'icon' => 'fa-solid fa-note-sticky',
+        ],
+        [
             'text' => 'cad',
             'icon' => 'fa-solid fa-gear',
             'can'  => ['list_sector'],
@@ -407,6 +413,16 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => 'https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdn.datatables.net/plug-ins/2.0.0/sorting/datetime-moment.js',
                 ],
                 [
                     'type' => 'css',

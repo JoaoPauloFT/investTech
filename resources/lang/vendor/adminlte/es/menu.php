@@ -7,5 +7,6 @@ return [
     'subsector'             => 'Sub-Sectors',
     'action'                => 'Acciones',
     'user'                  => 'Usuarios',
+    'indicator'             => 'indicadores bursátiles',
 
 ];
