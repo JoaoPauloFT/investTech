@@ -29,6 +29,7 @@ Route::get('/settings/subsector', [App\Http\Controllers\SubsectorController::cla
 // ACTION HISTORY
 Route::get('/indicator', [App\Http\Controllers\ActionHistoryController::class, 'index'])->name('indicator')->middleware('can:list_indicator');
 Route::get('/indicator/sync', [App\Http\Controllers\ActionHistoryController::class, 'sync'])->name('indicator.sync')->middleware('can:sync_indicator');
+Route::get('/indicator/filter', [App\Http\Controllers\FilterController::class, 'index'])->name('indicator.filter')->middleware('can:filter_indicator');
 
 // ACTION
 Route::get('/settings/action', [App\Http\Controllers\ActionController::class, 'index'])->name('action')->middleware('can:list_action');

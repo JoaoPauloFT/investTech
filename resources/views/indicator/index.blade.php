@@ -11,14 +11,18 @@
         <h1>{{ __('message.stock_indicators') }}</h1>
         <p>{{ __('message.stock_indicators_description') }}</p>
     </div>
-    @can('sync_action_history')
-        <div class="actions mb-3">
+    <div class="actions mb-3">
+        @can('sync_action_history')
             <a id="createButton" href="{{ route('indicator.sync') }}">
                 <i class="fa-solid fa-plus br"></i>
                 {{ __('message.get_indicators') }}
             </a>
-        </div>
-    @endcan
+        @endcan
+        <a id="seeFilter" href="#" data-toggle="modal" data-target="#modalForm">
+            <i class="fa-solid fa-plus br"></i>
+            {{ __('message.see_filters') }}
+        </a>
+    </div>
 @stop
 
 @section('content')
@@ -94,6 +98,7 @@
             </div>
         </div>
     </div>
+    {{ \App\Http\Controllers\FilterController::index() }}
 @stop
 
 <script>

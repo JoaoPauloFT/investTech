@@ -11,6 +11,9 @@
 .input-form:focus-visible {
   outline: none;
 }
+.input-form::-moz-placeholder {
+  color: #495057 !important;
+}
 .input-form::placeholder {
   color: #495057 !important;
 }
@@ -36,7 +39,7 @@
   opacity: 0.5;
 }
 
-.secondary-button, .actions a, .cancel-button {
+.secondary-button, .actions a, .actions button, .cancel-button {
   all: unset !important;
   display: flex !important;
   padding: 0.5rem 1rem !important;
@@ -49,7 +52,7 @@
   line-height: 1rem !important;
   cursor: pointer !important;
 }
-.secondary-button:hover, .actions a:hover, .cancel-button:hover {
+.secondary-button:hover, .actions a:hover, .actions button:hover, .cancel-button:hover {
   background-color: #E7E7E7 !important;
 }
 
@@ -269,6 +272,11 @@
   background-color: #FFFFFF !important;
 }
 
+.actions {
+  display: flex;
+  gap: 16px;
+}
+
 .content-wrapper {
   padding: 1.5rem;
 }
@@ -314,7 +322,7 @@
   white-space: nowrap;
 }
 
-.actions a .br {
+.actions a .br, .actions button .br {
   border: 1px solid #2B2A2A;
   border-radius: 100%;
   padding: 1px;
@@ -342,6 +350,4 @@
 
 .color-green {
   color: #81CA5E;
-}
-
-/*# sourceMappingURL=app.css.map */
+}/*# sourceMappingURL=app.css.map */

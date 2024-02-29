@@ -97,7 +97,11 @@
     }
 }
 
-
+//Header
+.actions {
+    display: flex;
+    gap: 16px;
+}
 
 //Body
 .content-wrapper {
